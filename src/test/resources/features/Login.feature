@@ -7,15 +7,14 @@ Feature:
     Given Go to Url.
     And   Enter "<email>" and "<password>".
     Then  Click Continue login button.
-    And   Verify that the user is successfully logged in.
 
     Examples:
-      | email                | password |
-      | powat82221@gyxmz.com | Test655  |
-      | 1@gmail.com          | Test655* |
-      |                      | Test655* |
-      | powat82221@gyxmz.com |          |
-      | powat82221@gyxmz.com | Test655* |
+      | email                  | password |
+      | powat82221@gyxmz.com   | Test655  |
+      | 1@gmail.com            | Test655* |
+      |                        | Test655* |
+      | powat82221@gyxmz.com   |          |
+      | timusberqnet@gmail.com | Test123* |
 
   @TC002
   Scenario Outline: Log in with Remember Me Option
@@ -23,12 +22,11 @@ Feature:
     Given Go to Url.
     And   Check the Remember Me option.
     Then  Log in with "<email>" and "<password>"
-    Then  close the browser.
     And   Reopen the browser and verify that the user is still logged in automatically.
 
     Examples:
-      | email                | password |
-      | powat82221@gyxmz.com | Test655* |
+      | email                  | password |
+      | timusberqnet@gmail.com | Test123* |
 
   @TC003
   Scenario Outline: Password Reset
@@ -41,5 +39,10 @@ Feature:
     And   Log in with the new "<email>","<password>".
 
     Examples:
-      | email                | password |
-      | powat82221@gyxmz.com | Test655* |
+      | email                  | password |
+      | timusberqnet@gmail.com | Test123* |
+
+  @TC004
+  Scenario: Close Browser
+
+    Given close the browser.

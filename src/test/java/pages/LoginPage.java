@@ -17,7 +17,7 @@ public class LoginPage {
     @FindBy(xpath = "//*[@data-testid='pages-login-niigwirnsa']")
     public WebElement passwordBox;
 
-    @FindBy(xpath = "//*[@class='el-checkbox__input is-checked']")
+    @FindBy(xpath = "//*[@class='el-checkbox__inner']")
     public WebElement rememberMeBox;
 
     @FindBy(xpath = "//*[@data-testid='login-forgot-password']")
@@ -35,6 +35,6 @@ public class LoginPage {
     @FindBy(xpath = "//*[@data-testid='login-create-account']")
     public WebElement creatAccountButton;
 
-    @FindBy(xpath = "")
+    @FindBy(className = "el-message el-message--error")
     public WebElement alert;
 }

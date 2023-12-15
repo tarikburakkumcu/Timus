@@ -19,5 +19,4 @@ public class ForgotPasswordPage {
 
     @FindBy(xpath = "//*[@data-testid='forgot-password-login']")
     public WebElement loginBox;
-
 }

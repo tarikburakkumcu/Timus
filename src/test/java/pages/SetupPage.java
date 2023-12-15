@@ -40,5 +40,4 @@ public class SetupPage {
 
     @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[6]")
     public WebElement matchCreteria;
-
 }

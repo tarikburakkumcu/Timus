@@ -18,10 +18,6 @@ public class Driver {
 
         if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
                 case "opera":
                     WebDriverManager.operadriver().setup();
                     driver = new OperaDriver();

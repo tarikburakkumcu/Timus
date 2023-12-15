@@ -12,13 +12,10 @@ public class RegisterStepDefinition {
 
     LoginPage loginPage = new LoginPage();
     RegisterPage registerPage = new RegisterPage();
-    MailPage mailPage = new MailPage();
     MainPage mainPage = new MainPage();
     WebDriver driver;
     JavascriptExecutor js = (JavascriptExecutor) driver;
     SetupPage setupPage = new SetupPage();
-    ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
-
 
     @And("Click Create Account button.")
     public void clickCreateAccountButton() {
@@ -39,7 +36,8 @@ public class RegisterStepDefinition {
 
     @And("Select {string}.")
     public void select(String country) {
-        registerPage.countryDropDown.sendKeys();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.click(registerPage.countryDropDown).sendKeys(country).click(registerPage.Turkey).perform();
     }
 
     @And("Check Privacy Policy and Terms Of Services")
@@ -49,16 +47,20 @@ public class RegisterStepDefinition {
             System.out.println("Privacy Box is Checked");
         } else {
             registerPage.privacyBox.click();
+            driver.switchTo().frame(registerPage.iFrame);
             js.executeScript("arguments[0].scrollIntoView();", registerPage.regPrivacyPolicy);
             registerPage.regPrivacyPolicy.click();
+            driver.switchTo().defaultContent();
         }
 
         if (registerPage.termsBox.isSelected()) {
             System.out.println("Terms of Services is Checked");
         } else {
             registerPage.termsBox.click();
+            driver.switchTo().frame(registerPage.iFrame);
             js.executeScript("arguments[0].scrollIntoView();", registerPage.regTermsOfService);
             registerPage.regTermsOfService.click();
+            driver.switchTo().defaultContent();
         }
     }
 
@@ -77,6 +79,7 @@ public class RegisterStepDefinition {
         clickCreateAccountButton();
         enterAnd(firstName, lastName, email);
         select(country);
+        checkPrivacyPolicyAndTermsOfServices();
         clickContinueLoginButton();
     }
 
@@ -85,19 +88,9 @@ public class RegisterStepDefinition {
         Driver.getDriver().get(ConfigReader.getProperty("mailUrl"));
     }
 
-    @And("Click on the activation link")
-    public void clickOnTheActivationLink() {
-        mailPage.activateLink.click();
-    }
-
     @Then("Verify that the account is activated and the user can log in.")
     public void verifyThatTheAccountIsActivatedAndTheUserCanLogIn() {
         mainPage.name.isDisplayed();
-    }
-
-    @Then("Click set Password.")
-    public void clickSetPassword() {
-        mailPage.activateLink.click();
     }
 
     @And("Enter {string}.")

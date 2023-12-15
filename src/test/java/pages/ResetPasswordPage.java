@@ -19,5 +19,4 @@ public class ResetPasswordPage {
 
     @FindBy(xpath = "//*[@data-testid='reset-password-confirm']")
     public WebElement resetButton;
-
 }

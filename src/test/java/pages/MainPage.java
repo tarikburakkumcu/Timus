@@ -13,5 +13,4 @@ public class MainPage {
 
     @FindBy(xpath = "//*[@data-testid='setup-password-title-input']")
     public WebElement name;
-
 }

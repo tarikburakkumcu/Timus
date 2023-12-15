@@ -23,11 +23,20 @@ public class RegisterPage {
     @FindBy(xpath = "//*[@data-testid='register-country-dropdown']")
     public WebElement countryDropDown;
 
+    @FindBy(xpath = "//*[@data-testid='register-country-225']")
+    public WebElement Turkey;
+
+    @FindBy(xpath = "//*[@data-testid='pages-register-index-fnkwbxnok']")
+    public WebElement iFrame;
+
     @FindBy(id = "privacy_box")
     public WebElement privacyBox;
 
     @FindBy(xpath = "(//*[@class='agreement_text'])[3]")
     public WebElement regPrivacyPolicy;
+
+    @FindBy(xpath = "//*[@data-testid=' pages-register-index-zfrzzhrgq']")
+    public WebElement readBox;
 
     @FindBy(id = "term_of_use_box")
     public WebElement termsBox;
