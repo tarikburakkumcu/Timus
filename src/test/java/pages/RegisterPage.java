@@ -44,5 +44,9 @@ public class RegisterPage {
     @FindBy(xpath = "//*[@data-testid='pages-register-index-zfrzzhrgq']")
     public WebElement acceptButton;
 
+    @FindBy(xpath = "")
+    public WebElement alertRegisterPage;
 
+    @FindBy(xpath = "")
+    public WebElement alertRegisterPage2;
 }

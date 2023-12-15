@@ -14,4 +14,6 @@ public class MailPage {
     @FindBy(xpath = "//*[@data-testid='login-email-input']")
     public WebElement resetLink;
 
+    @FindBy(xpath = "//*[@data-testid='login-email-input']")
+    public WebElement activateLink;
 }

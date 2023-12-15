@@ -23,15 +23,22 @@ public class SetupPage {
     @FindBy(xpath = "//*[@data-testid='setup-password-continue']")
     public WebElement setUpPasswordButton;
 
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[1]")
+    public WebElement lengthCreteria;
 
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[2]")
+    public WebElement lowerCaseCreteria;
 
-    public String selectedInDateControl(String day) {
-        String xpath = "//input[contains(@value, '/" + day + "/2021' ) and @id='checkin_date']";
-        return xpath;
-    }
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[3]")
+    public WebElement upperCaseCreteria;
 
-    public String selectedOutDateControl(String day) {
-        String xpath = "//input[contains(@value, '/" + day + "/2021' ) and @id='checkout_date']";
-        return xpath;
-    }
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[4]")
+    public WebElement digitCreteria;
+
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[5]")
+    public WebElement specialCreteria;
+
+    @FindBy(xpath = "(//*[@class='isax isax-tick-circle valid-icon'])[6]")
+    public WebElement matchCreteria;
+
 }

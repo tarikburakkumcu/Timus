@@ -7,8 +7,9 @@ Feature:
     Given Go to Url.
     And   Click Create Account button.
     And   Verify that the user is successfully go to register page.
-    And   Enter "firstName", "lastName" and "email".
-    And   Select "country".
+    And   Enter "<firstName>", "<lastName>" and "<email>".
+    And   Select "<country>".
+    And   Check Privacy Policy and Terms Of Services
     Then  Click continue login button.
     And   Verify that the user is successfully register verify page.
 
@@ -24,34 +25,56 @@ Feature:
       | Test123+  | kumcu    | powat12345@gyxmz.com | turkey  |
 
   @TC102
-  Scenario: Account Activation via Email
+  Scenario Outline: Account Activation via Email
 
     Given Go to Url.
-    And   Register with a valid email address.
+    And   Register with a valid "<firstName>", "<lastName>", "<email>" address and "<country>".
     Then  Check the email for the activation link.
     And   Click on the activation link
     Then  Verify that the account is activated and the user can log in.
 
-  @TC103
-  Scenario: Password Strength
+    Examples:
+      | firstName | lastName | email                | country |
+      | Test123*  | kumcu    | powat82221@gyxmz.com | turkey  |
 
-    Given Go to Url.
-    And   Enter a strong password during registration.
+  @TC103
+  Scenario Outline: Password Strength
+
+    Given Go to "mailUrl".
+    Then  Click set Password.
+    And   Enter "<name>".
+    And   Enter a strong "<password>" during registration.
     Then  Verify that the system accepts the password strength criteria.
 
-  @TC104
-  Scenario: Weak Password
+    Examples:
+      | name     | password |
+      | Test123* | est655*  |
 
-    Given Go to Url.
-    And   Enter a weak password during registration.
-    Then  Call the registration method.
+  @TC104
+  Scenario Outline: Weak Password
+
+    Given Go to "mailUrl".
+    Then  Click set Password.
+    And   Enter "<name>".
+    And   Enter a weak "<password>" during registration.
     And   Verify that the system prompts for a stronger password.
 
-  @TC105
-  Scenario: Mismatched Passwords
+    Examples:
+      | name     | password |
+      | Test123* | Abc123*  |
+      | Test123* | ABC1234* |
+      | Test123* | abc1234* |
+      | Test123* |          |
+      | Test123* | Abc12345 |
 
-    Given Go to Url.
-    And   Enter different passwords in the "Password" and "Confirm Password" fields.
-    Then  Call the registration method.
+  @TC105
+  Scenario Outline: Mismatched Passwords
+
+    Given Go to "setupUrl".
+    And   Enter different passwords in the "<password>" and "<confirm password>" fields.
     And   Verify that the system displays an appropriate error message.
+
+    Examples:
+      | password | confirm password |
+      | Abc1234* | aBC9876+         |
 

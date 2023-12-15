@@ -75,7 +75,6 @@ public class LoginStepDefinition {
     public void checkTheEmailForThePasswordResetLink() {
         Driver.getDriver().get(ConfigReader.getProperty("mailUrl"));
         mailPage.resetLink.click();
-
     }
 
     @Then("Set a new {string} using the link.")
@@ -89,5 +88,10 @@ public class LoginStepDefinition {
     public void logInWithTheNew(String email, String password) {
         enterAnd(email, password);
         clickContinueLoginButton();
+    }
+
+    @Given("Go to {string}.")
+    public void goTo(String Url) {
+        Driver.getDriver().get(ConfigReader.getProperty(Url));
     }
 }
